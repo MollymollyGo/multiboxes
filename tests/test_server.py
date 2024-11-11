@@ -1,6 +1,6 @@
 import asyncio
 import pytest
-from multibox.game_server import initialize, init_main
+from .multibox.game_server import initialize, init_main
 
 @pytest.mark.asyncio
 async def test_server_runs():
