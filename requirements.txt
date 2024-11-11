@@ -1,6 +1,6 @@
 pygame
 pymunk
-pythonosc
+python-osc
 uuid
 zeroconf
 asyncio
