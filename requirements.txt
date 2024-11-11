@@ -1,0 +1,6 @@
+pygame
+pymunk
+pythonosc
+uuid
+zeroconf
+asyncio

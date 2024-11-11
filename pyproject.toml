@@ -1,0 +1,5 @@
+[project]
+name = "multibox"
+version = "0.1.0"
+description = "A UDP-based game server for pygame and pymunk in asyncio"
+authors = [{ name = "Giovanni Lion", email = "giovanni.lion@gmail.com" }]
