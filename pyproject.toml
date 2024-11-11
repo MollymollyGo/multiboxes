@@ -11,3 +11,9 @@ dependencies = [
     "zeroconf",
     "asyncio"
 ]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-asyncio"
+]

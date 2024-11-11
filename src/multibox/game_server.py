@@ -76,25 +76,21 @@ async def init_main():
     await game_loop()
     transport.close()
 
-if __name__ == "__main__":
+def initialize():
     
     # Set to store the connected clients
-    global clients
+    global clients, players
     clients = set()
-
-    # Dictionary to store player bodies
-    global players
     players = {}
-
-    ip = get_ip()
-    # Create a static floor
-
 
     global max_velocity, speed_factor
     max_velocity = 1000
     speed_factor = 10000
 
-
     create_space()
 
+    
+
+if __name__ == "__main__":
+    initialize()
     asyncio.run(init_main())
