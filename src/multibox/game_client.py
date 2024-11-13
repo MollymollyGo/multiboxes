@@ -67,9 +67,12 @@ async def draw(screen):
 
 async def handle_events(event_queue):
     velocity = [0, 0]
+    angular_velocity = 0
+
     while True:        
         if event_queue.qsize() < 1:
             await asyncio.sleep(0.01)
+            client.send_message("/update_velocity", [local_player.id, velocity[0], velocity[1], angular_velocity])
             continue
         else:
             print("found events")
@@ -81,8 +84,6 @@ async def handle_events(event_queue):
         will_exit = [event for event in events if event.type == pygame.QUIT]
         if will_exit:
             break
-        velocity = [0, 0]
-        angular_velocity = 0
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:

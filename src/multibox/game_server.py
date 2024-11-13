@@ -84,12 +84,11 @@ def initialize():
     players = {}
 
     global max_velocity, speed_factor
-    max_velocity = 1000
-    speed_factor = 10000
+    max_velocity = 200
+    speed_factor = 1000
 
     create_space()
 
-    
 
 if __name__ == "__main__":
     initialize()
