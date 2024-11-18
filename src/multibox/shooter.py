@@ -114,6 +114,7 @@ while True:
         player_x -= player_speed
     if keys[pygame.K_RIGHT] and player_x < SCREEN_WIDTH - 50:
         player_x += player_speed
+    print(player_x, player_y)
 
     # Bullet movement
     if bullet_state == "fired":

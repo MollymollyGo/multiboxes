@@ -1,4 +1,5 @@
 import asyncio
+import pygame
 #import pymunk
 from pythonosc.osc_server import AsyncIOOSCUDPServer
 from pythonosc.dispatcher import Dispatcher
@@ -24,6 +25,7 @@ async def game_loop():
 
 
 def create_player(address, *args):
+    global player_id
     player_id = args[0]
     #body = pymunk.Body()
     #body.position = 50, 100
@@ -37,13 +39,14 @@ def create_player(address, *args):
     print(f"Player {player_id} connected")
 
     # Create the client to send updates to the player
-    client_ip = args[1]
-    client_port = args[2]
-    client = SimpleUDPClient(client_ip, client_port)
-    clients.add(client)
+    #client_ip = args[1]
+    #client_port = args[2]
+    #client = SimpleUDPClient(client_ip, client_port)
+    #clients.add(client)
 
 
 def update_player_velocity(address, *args):
+    global player_id
     player_id = args[0]
     x, y = args[1], args[2]
     if player_id in players:
@@ -52,7 +55,12 @@ def update_player_velocity(address, *args):
                 force=(x * speed_factor, y * speed_factor),
                 point=(players[player_id].position.x, players[player_id].position.y)
             )
-
+def update_player_position(address,*args):
+    player_id = args[0]
+    x, y = args[1], args[2]
+    if player_id in players:
+        point = (players[player_id].position.x, players[player_id].position.y)
+        #print(players[player_id].position.x, players[player_id].position.y)
 
 #def create_space():
     #global space
@@ -72,8 +80,8 @@ def update_player_velocity(address, *args):
 
 async def init_main():
     dispatcher = Dispatcher()
-    dispatcher.map("/update_velocity", update_player_velocity)
-    dispatcher.map("/update_velocity", update_player_velocity)
+    #dispatcher.map("/update_velocity", update_player_velocity)
+    dispatcher.map("/update_position", update_player_position)
     dispatcher.map("/connect", create_player)
     ip_server= "127.0.0.1"
     service_info = make_service_info(listening_ips=[ip_server])
