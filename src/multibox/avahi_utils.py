@@ -10,7 +10,7 @@ default_port = 11337
 
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(('8.8.8.8', 1))  # connect() for UDP doesn't send packets
+    s.connect(('127.0.0.1', 1))  # connect() for UDP doesn't send packets
     return s.getsockname()[0]
 
 async def register_service(service_info):
@@ -24,6 +24,6 @@ def make_service_info(port = default_port, name = service_name):
         type_=service_type,
         name=name,
         port=port,
-        addresses=[get_ip()]
+        addresses=["127.0.0.1"]
     )
 

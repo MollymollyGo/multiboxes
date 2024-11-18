@@ -3,7 +3,7 @@ import uuid
 import math
 
 class Player:
-    def __init__(self, x, y):
+    def __init__(self, x, y, img):
         self.x = x
         self.y = y
         self.dx = 0
