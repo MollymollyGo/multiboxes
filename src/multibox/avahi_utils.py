@@ -19,11 +19,11 @@ async def register_service(service_info):
     while True:
         await asyncio.sleep(0.1)
 
-def make_service_info(port = default_port, name = service_name):
+def make_service_info(port = default_port, name = service_name,listening_ips=[]):
     return ServiceInfo(
         type_=service_type,
         name=name,
         port=port,
-        addresses=["127.0.0.1"]
+        addresses=listening_ips
     )
 

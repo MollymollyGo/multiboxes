@@ -108,7 +108,7 @@ last_time = pygame.time.get_ticks()
 def connect_to_server():
     global client
     global local_ip, local_port, local_player
-    local_ip = get_ip()
+    local_ip = "127.0.0.1"
     local_port = random.randint(5000, 10000)
     local_player = Player(random.randint(player_x, player_x + 10), random.randint(player_y, player_y), player_img)
 

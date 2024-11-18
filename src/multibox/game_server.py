@@ -75,7 +75,8 @@ async def init_main():
     dispatcher.map("/update_velocity", update_player_velocity)
     dispatcher.map("/update_velocity", update_player_velocity)
     dispatcher.map("/connect", create_player)
-    service_info = make_service_info("127.0.0.1")
+    ip_server= "127.0.0.1"
+    service_info = make_service_info(listening_ips=[ip_server])
     asyncio.ensure_future(register_service(service_info))
     ip_string = socket.inet_ntoa(service_info.addresses[0])
     server = AsyncIOOSCUDPServer((ip_string, service_info.port), dispatcher, asyncio.get_event_loop())
